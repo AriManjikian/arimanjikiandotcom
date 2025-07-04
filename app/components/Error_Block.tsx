@@ -2,8 +2,16 @@
 
 import { useState, useEffect } from 'react';
 
+type LatestError = {
+  filepath: string;
+  line: number;
+  column: number;
+  message: string;
+  timestamp: number;
+};
+
 const Error_Block = () => {
-  const [latestError, setLatestError] = useState(null);
+  const [latestError, setLatestError] = useState<LatestError | null>(null);
 
   useEffect(() => {
     const fetchError = async () => {

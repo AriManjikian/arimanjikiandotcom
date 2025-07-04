@@ -2,6 +2,5 @@
 import type { FC } from 'react';
 
 export const postMap: Record<string, () => Promise<{ default: FC }>> = {
-    examples: () => import('./examples'),
+  'examples': () => import('./examples'),
 };
-

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "generate-postmap": "node scripts/generatePostMap.js",
+    "generate-postmap": "node scripts/generatePostMap.mjs",
     "build": "npm run generate-postmap && next build",
     "start": "next start",
     "lint": "next lint"
