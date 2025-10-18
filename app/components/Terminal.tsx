@@ -78,7 +78,7 @@ const TerminalComponent: React.FC = () => {
       'Contact Information:',
       '===================',
       '',
-      'Email:    arimanjikian@gmail.com',
+      'Email:    amanjikian3@gatech.edu',
       'Phone:    (404) 654-0033',
       'LinkedIn: linkedin.com/in/arimanjikian',
       'GitHub:   github.com/arimanjikian',
