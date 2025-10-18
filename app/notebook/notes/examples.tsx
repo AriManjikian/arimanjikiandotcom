@@ -53,7 +53,7 @@ const MarkdownShowcase: React.FC = () => {
   if (!name) {
     throw new Error('Name is required');
   }
-  
+
   return \`Hello, \${name}! Welcome to our application.\`;
 }
 
@@ -72,11 +72,11 @@ console.log(greeting);`}
         return [0]
     elif n == 2:
         return [0, 1]
-    
+
     sequence = [0, 1]
     for i in range(2, n):
         sequence.append(sequence[i-1] + sequence[i-2])
-    
+
     return sequence
 
 # Example usage
@@ -159,17 +159,17 @@ print(f"First 10 Fibonacci numbers: {fib_numbers}")`}
 const UserProfile: React.FC<{ userId: string }> = ({ userId }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     fetchUser(userId)
       .then(setUser)
       .catch(console.error)
       .finally(() => setLoading(false));
   }, [userId]);
-  
+
   if (loading) return <div>Loading...</div>;
   if (!user) return <div>User not found</div>;
-  
+
   return (
     <div className="user-profile">
       <h2>{user.name}</h2>

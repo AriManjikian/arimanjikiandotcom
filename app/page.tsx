@@ -153,8 +153,8 @@ const Index = () => {
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-border text-center">
           <p className="text-muted-foreground text-sm">
-            <a href="mailto:arikevorkmanjikian@gmail.com" className="hover:text-primary underline">
-              arikevorkmanjikian@gmail.com
+            <a href="mailto:amanjikian3@gatech.edu" className="hover:text-primary underline">
+              amanjikian3@gatech.edu
             </a>
           </p>
         </div>
