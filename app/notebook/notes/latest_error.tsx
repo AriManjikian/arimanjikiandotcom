@@ -1,77 +1,61 @@
+'use client';
 import React from 'react';
 import {
   MarkdownSection,
   MarkdownText,
   MarkdownCode,
-  MarkdownBlockquote,
   MarkdownList,
-  MarkdownLink,
   MarkdownTable,
+  MarkdownBlockquote,
+  MarkdownLink,
   MarkdownHorizontalRule,
 } from '../../components/MarkdownComponents';
 
 const NeovimLatestErrorPage: React.FC = () => {
   return (
     <div className="max-w-3xl mx-auto px-6 py-10">
-      <MarkdownSection title="🚀 How I Connected Neovim to My Website to Log My Latest Syntax Error" level={1}>
-        <p className="mt-2 mb-6 text-gray-700">
-          Recently I built a small plugin that sends my <MarkdownText italic>latest Neovim syntax error</MarkdownText>{' '}
-          to my website using <MarkdownText bold>Cloudflare Workers</MarkdownText> and{' '}
-          <MarkdownText bold>KV storage</MarkdownText>. Here’s how I set it up.
+      <MarkdownSection title="How I Log My Latest Neovim Error to My Website" level={1}>
+        <p>
+          I wanted a simple way to see my latest Neovim syntax error on my site. So I connected Neovim to a Cloudflare
+          Worker and KV storage. Here’s how I did it.
         </p>
       </MarkdownSection>
 
-      <MarkdownSection title="🧠 The Idea" level={2}>
-        <p className="mb-4">Every time I make a syntax error in Neovim, I wanted it to automatically be:</p>
+      <MarkdownSection title="The Idea" level={2}>
+        <p>Whenever I make a syntax error in Neovim, I wanted it to:</p>
         <MarkdownList
           items={[
-            'Captured using Neovim’s built-in LSP diagnostics',
-            'Filtered to avoid duplicates',
-            'Pushed to a Cloudflare Worker endpoint',
-            'Stored in KV and displayed on my personal site',
+            'Capture it via Neovim’s LSP diagnostics',
+            'Avoid duplicates',
+            'Send it to a Cloudflare Worker',
+            'Store it in KV and show it on my site',
           ]}
         />
       </MarkdownSection>
 
-      <MarkdownSection title="⚡ The Neovim Side" level={2}>
-        <p className="mb-4">
-          I wrote a simple Lua plugin that hooks into <MarkdownCode inline>DiagnosticChanged</MarkdownCode> and sends
-          the latest error to Cloudflare using
-          <MarkdownCode inline>curl</MarkdownCode>:
+      <MarkdownSection title="Neovim Setup" level={2}>
+        <p>
+          I wrote a small Lua plugin that hooks into <MarkdownCode inline>DiagnosticChanged</MarkdownCode> and sends the
+          error via <MarkdownCode inline>curl</MarkdownCode>:
         </p>
         <MarkdownCode language="lua">
           {`vim.api.nvim_create_autocmd("DiagnosticChanged", {
   group = vim.api.nvim_create_augroup("LatestError", { clear = true }),
   callback = log_and_push,
-  desc = "Push latest error to Cloudflare"
 })`}
         </MarkdownCode>
-        <p className="mt-4">It collects the error, checks for duplicates, and pushes JSON to the Worker:</p>
-        <MarkdownCode language="lua">
-          {`local curl_cmd = {
-  'curl', '-s', '-X', 'POST',
-  '-H', 'Content-Type: application/json',
-  '-H', 'User-Agent: nvim-latest-error/1.0',
-  '-d', vim.fn.json_encode(data),
-  '--write-out', '%{http_code}',
-  CLOUD_FLARE_URL
-}
-vim.fn.jobstart(curl_cmd, { ... })`}
-        </MarkdownCode>
+        <p>It collects the error, filters duplicates, and pushes JSON to my Worker.</p>
       </MarkdownSection>
 
-      <MarkdownSection title="🌐 The Cloudflare Worker" level={2}>
-        <p className="mb-4">
-          On the server side, I used a simple Cloudflare Worker to accept the JSON, store it in KV, and return it later
-          via GET:
-        </p>
+      <MarkdownSection title="Cloudflare Worker" level={2}>
+        <p>On the server side, I just accept JSON, store it in KV, and serve it back:</p>
         <MarkdownCode language="javascript">
           {`export default {
   async fetch(request, env) {
     if (request.method === 'POST') {
       const body = await request.json();
       await env.ERRORS.put('latest_error', JSON.stringify(body));
-      return new Response('OK', { status: 200 });
+      return new Response('OK');
     }
 
     if (request.method === 'GET') {
@@ -83,16 +67,10 @@ vim.fn.jobstart(curl_cmd, { ... })`}
   }
 };`}
         </MarkdownCode>
-
-        <MarkdownBlockquote>
-          <MarkdownText italic>
-            KV is perfect for this use case — it’s fast, distributed, and I only need to store one object.
-          </MarkdownText>
-        </MarkdownBlockquote>
       </MarkdownSection>
 
-      <MarkdownSection title="🗂️ Data Format" level={2}>
-        <p className="mb-4">Here’s the structure I store in KV for each error:</p>
+      <MarkdownSection title="Data Format" level={2}>
+        <p>Each error I store has:</p>
         <MarkdownTable
           headers={['Field', 'Type', 'Description']}
           rows={[
@@ -105,40 +83,32 @@ vim.fn.jobstart(curl_cmd, { ... })`}
         />
       </MarkdownSection>
 
-      <MarkdownSection title="🖥️ Displaying It on My Site" level={2}>
-        <p className="mb-4">Fetching the latest error from my Worker is as simple as:</p>
+      <MarkdownSection title="Display on My Site" level={2}>
+        <p>Fetching it is simple:</p>
         <MarkdownCode language="javascript">
           {`fetch('https://neovim-latest-error.example.workers.dev/')
   .then(res => res.json())
-  .then(data => {
-    console.log('Latest error:', data);
-  });`}
+  .then(data => console.log('Latest error:', data));`}
         </MarkdownCode>
-        <p className="mt-4">
-          On my dashboard, I display the filename, location, error message, and timestamp in a small widget.
-        </p>
+        <p>I show filename, location, message, and timestamp in a small widget on my dashboard.</p>
       </MarkdownSection>
 
       <MarkdownHorizontalRule />
 
-      <MarkdownSection title="✨ Final Thoughts" level={2}>
-        <MarkdownBlockquote author="Me">
-          This was a fun afternoon project that tied together <MarkdownText bold>Neovim</MarkdownText>,{' '}
-          <MarkdownText bold>Cloudflare Workers</MarkdownText>, and <MarkdownText bold>KV</MarkdownText> into a personal
+      <MarkdownSection title="Final Thoughts" level={2}>
+        <MarkdownBlockquote>
+          This was a fun project that tied together <MarkdownText bold>Neovim</MarkdownText>,{' '}
+          <MarkdownText bold>Cloudflare Workers</MarkdownText>, and <MarkdownText bold>KV</MarkdownText> into a live
           error feed.
         </MarkdownBlockquote>
 
         <MarkdownList
           ordered
-          items={[
-            '📝 Neovim captures and sends the error',
-            '🌩 Cloudflare Worker stores it in KV',
-            '🌐 My website fetches and displays it live',
-          ]}
+          items={['Neovim captures and sends the error', 'Worker stores it in KV', 'Website displays it live']}
         />
 
-        <p className="mt-4">
-          You can check out the full source code on{' '}
+        <p>
+          Full source code is on{' '}
           <MarkdownLink href="https://github.com/ari-manji/nvim-latest-error" external>
             GitHub
           </MarkdownLink>
