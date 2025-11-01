@@ -1,8 +1,10 @@
 'use client';
-import { Copy } from 'lucide-react';
 import React from 'react';
 import { useState } from 'react';
 import { JSX } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
 interface MarkdownSectionProps {
   title: string;
   children: React.ReactNode;
@@ -67,24 +69,23 @@ export const MarkdownCode: React.FC<MarkdownCodeProps> = ({ children, language =
       console.error('Failed to copy code: ', err);
     }
   };
+
   if (inline) {
-    return <code className="bg-indigo-950 px-1 py-0.5 rounded font-mono text-sm">{children}</code>;
+    return <code className="bg-stone-950 px-1 py-0.5 rounded font-mono text-sm">{children}</code>;
   }
 
   return (
     <div className="my-4">
-      <div className="text-neutral-100 bg-indigo-950 rounded-lg overflow-hidden">
-        {language && (
-          <span className="bg-green-500 px-4 py-2 flex justify-between items-center">
-            <div className="text-sm font-mono text-primary-foreground">{language}</div>
-            <button onClick={handleCopy} className="hover:opacity-80 transition">
-              <Copy className="text-black size-4" />
-            </button>
-          </span>
-        )}
-        <pre className="p-4 overflow-x-auto">
-          <code className="font-mono text-sm">{children}</code>
-        </pre>
+      <div className="rounded-lg overflow-hidden shadow-lg">
+        <div className="flex justify-between items-center bg-green-500 px-4 py-2">
+          <div className="text-black font-bold">{language}</div>
+          <button onClick={handleCopy} className="hover:opacity-80 transition text-black">
+            {copied ? 'Copied!' : 'Copy'}
+          </button>
+        </div>
+        <SyntaxHighlighter language={language} style={oneDark} className="p-4 overflow-x-auto font-mono text-sm">
+          {children}
+        </SyntaxHighlighter>
       </div>
     </div>
   );
@@ -157,7 +158,7 @@ export const MarkdownBlockquote: React.FC<MarkdownBlockquoteProps> = ({ children
     <blockquote className="border-l-4 border-neutral-300 pl-4 py-2 my-4 italic font-mono">
       <span className="text-neutral-500 mr-2">&gt;</span>
       {children}
-      <footer className="text-sm text-neutral-600 mt-2 not-italic">{author && <>— {author}</>}</footer>
+      <footer className="text-sm text-neutral-500 mt-2 not-italic">{author && <>— {author}</>}</footer>
     </blockquote>
   );
 };
@@ -185,7 +186,6 @@ export const MarkdownHorizontalRule: React.FC = () => {
   return (
     <div className="my-8 text-center">
       <hr className="border-neutral-300" />
-      <span className="text-neutral-500 font-mono text-sm">---</span>
     </div>
   );
 };
@@ -207,16 +207,16 @@ export const MarkdownText: React.FC<MarkdownTextProps> = ({
   let wrapper = '';
 
   if (bold) {
-    className += ' font-bold';
-    wrapper += '**';
+    className += ' font-extrabold';
+    wrapper += '';
   }
   if (italic) {
     className += ' italic';
-    wrapper += '*';
+    wrapper += '';
   }
   if (strikethrough) {
     className += ' line-through';
-    wrapper += '~~';
+    wrapper += '';
   }
 
   return (

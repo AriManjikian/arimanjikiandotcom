@@ -10,7 +10,7 @@ import {
 } from '../../components/MarkdownComponents';
 const MarkdownShowcase: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto p-6 min-h-screen">
+    <div className="max-w-4xl mx-auto p-6 min-h-screen" id="top">
       <MarkdownSection title="Markdown Components Showcase" level={1}>
         <p className=" mb-6">A demonstration of the markdown-style components.</p>
       </MarkdownSection>
@@ -133,8 +133,7 @@ print(f"First 10 Fibonacci numbers: {fib_numbers}")`}
             .
           </p>
           <p>
-            You can also link to <MarkdownLink href="#internal-section">internal sections</MarkdownLink> within the same
-            page.
+            You can also link to <MarkdownLink href="#top">internal sections</MarkdownLink> within the same page.
           </p>
         </div>
       </MarkdownSection>
