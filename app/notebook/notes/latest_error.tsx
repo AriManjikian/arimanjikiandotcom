@@ -109,7 +109,7 @@ const NeovimLatestErrorPage: React.FC = () => {
 
         <p>
           Full source code is on{' '}
-          <MarkdownLink href="https://github.com/ari-manji/nvim-latest-error" external>
+          <MarkdownLink href="https://github.com/AriManjikian/latest_error.nvim" external>
             GitHub
           </MarkdownLink>
           .
