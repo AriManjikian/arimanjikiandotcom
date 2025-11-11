@@ -24,7 +24,7 @@ const Index = () => {
                 Terminal
               </a>
               <a
-                href="AriManjikian-Resume.pdf"
+                href="AriManjikianResume.pdf"
                 target="_blank"
                 className="inline-block bg-secondary text-secondary-foreground px-4 py-2 rounded text-sm hover:bg-black hover:text-white  transition-colors"
               >
