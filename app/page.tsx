@@ -58,6 +58,32 @@ const Index = () => {
               <div className="p-4 bg-card rounded border">
                 <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
                   <span className="text-muted-foreground">### </span>
+                  <span>RISC-V Single-Cycle CPU</span>{' '}
+                  <span className="flex gap-2 items-center ml-auto">
+                    <a
+                      href="https://github.com/AriManjikian/core0_riscv"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-foreground"
+                    >
+                      <Github className="size-4" />
+                    </a>
+                  </span>
+                </h3>
+                <p className="text-muted-foreground mb-3">
+                  A single-cycle RISC-V processor core supporting the full RV32I instruction set, including ALU ops,
+                  branching, and memory access, with instruction-level testing with cocotb.
+                </p>
+                <div className="flex gap-2 text-sm">
+                  <span className="bg-green-100 text-blue-800 px-2 py-1 rounded">SystemVerilog</span>
+                  <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded">cocotb</span>
+                  <span className="bg-blue-100 text-green-800 px-2 py-1 rounded">Verilator</span>
+                </div>
+              </div>
+
+              <div className="p-4 bg-card rounded border">
+                <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
+                  <span className="text-muted-foreground">### </span>
                   <span>Senence Clustering</span>{' '}
                   <span className="flex gap-2 items-center ml-auto">
                     <a
