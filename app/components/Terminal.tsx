@@ -41,38 +41,28 @@ const TerminalComponent: React.FC = () => {
       'Featured Projects:',
       '=================',
       '',
-      '1. SaaS - Sentence Clustering',
-      '   - Developed JavaScript program for sentence embedding and clustering using OpenAI API and TensorFlow Universal Sentence Encoder.',
-      '   - Achieved 100% cost savings by leveraging open-source models.',
-      '   - Clustered over 5,000 sentences based on contextual similarity.',
-      '   - Improved clustering accuracy by 15% using elbow method and testing K-means, DBSCAN, HAC.',
-      '   - Integrated clustering in a React SaaS platform for organizing Q&A sessions.',
+      '1. RISC-V Single-Cycle CPU Core',
+      '   - Designed and implemented a single-cycle RV32I processor core in SystemVerilog.',
+      '   - Supports ALU operations, branching, and memory access.',
+      '   - Built a cocotb verification framework and ran instruction-level tests in Verilator.',
+      '   - Achieved 99.4% code coverage and uncovered multiple decode and control-logic edge cases.',
       '',
-      '2. BuzzPathway',
-      '   - Built a personalized transfer plan generator used by 500+ students.',
-      '   - Enabled visualization of transfer pathways based on academic background and major.',
-      '   - Automated data collection using web scraping and Vercel cron jobs.',
-      '   - Used NoSQL MongoDB to manage course requirements for 1700+ schools.',
+      '2. SaaS — Sentence Clustering',
+      '   - Developed sentence embedding and clustering pipeline using TensorFlow Universal Sentence Encoder.',
+      '   - Achieved 100% cost savings by transitioning away from paid OpenAI APIs.',
+      '   - Clustered over 5,000 sentences using K-means, DBSCAN, and HAC.',
+      '   - Improved clustering accuracy by 15% using elbow method and iterative testing.',
+      '   - Integrated clustering into a React SaaS platform for organizing Q&A sessions.',
     ],
     experience: [
       'Work Experience:',
       '===============',
       '',
-      'Full-Stack Engineer @ ZCreations Jewelry (Oct 2024 – Jun 2025)',
-      '  - Achieved 2,600+ monthly impressions via targeted SEO.',
-      '  - Generated 700+ phone calls, 1,200 site visits, and 400 direction requests.',
-      '  - Built full business management system with invoicing, inventory, CRM, and automation.',
-      '  - Deployed secure full-stack platform with Python, React, TypeScript, AWS S3, and PostgreSQL.',
-      '',
-      'Python Developer @ Restaurant Chain (Jun 2024 – Sep 2024)',
-      '  - Created ad hardware system to show synced media on 20+ LCDs using Raspberry Pi, Python, Docker, MQTT.',
-      '  - Developed dashboard for media uploads and device management using AWS S3 and PostgreSQL.',
-      '  - Designed centralized control system for hardware and software.',
-      '',
-      'Web Development Volunteer @ Armenian Relief and Development Association (Jun 2023 – Sep 2023)',
-      '  - Built donation-tracking dashboard managing $1M+ in annual contributions.',
-      '  - Added auth, SQL database, email notifications, image storage.',
-      '  - Collaborated with designers to ensure clean UX and UI.',
+      'Digital Design Engineer @ SiliconJackets (Aug 2025 – Nov 2025)',
+      '  - Designed and implemented a superscalar pipelined RISC-V core with full RV32I support, including custom CSR logic for tapeout.',
+      '  - Built and maintained a SystemVerilog verification suite, achieving 99.8% code coverage.',
+      '  - Validated functionality using SimVision and Verdi, resolving critical decode, memory, and control-path edge cases.',
+      '  - Collaborated with physical design to refine floorplanning and verify clocking and reset strategies prior to final layout.',
     ],
     contact: [
       'Contact Information:',
@@ -226,8 +216,8 @@ const TerminalComponent: React.FC = () => {
                 <div
                   key={lineIndex}
                   className={`font-mono leading-tight ${isBanner
-                      ? `flex text-[7px] xs:text-[8px] sm:text-[9px] md:text-[10px] tracking-tight ${bannerColorClass}`
-                      : 'text-gray-300 text-sm'
+                    ? `flex text-[7px] xs:text-[8px] sm:text-[9px] md:text-[10px] tracking-tight ${bannerColorClass}`
+                    : 'text-gray-300 text-sm'
                     }`}
                   style={isBanner ? { fontFamily: '"Fira Mono", monospace' } : {}}
                 >

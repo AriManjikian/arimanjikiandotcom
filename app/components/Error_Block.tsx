@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 type LatestError = {
@@ -33,11 +34,13 @@ const Error_Block = () => {
       <h2 className="mb-4 text-red-500 font-mono text-lg">
         ┌─ <span className="text-red-400">Latest Error I&apos;ve Encountered</span>
       </h2>
+
       {latestError && (
         <div className="rounded w-full bg-black text-red-500 p-4 text-sm font-mono border border-red-700 shadow-inner whitespace-pre-wrap overflow-x-auto">
           <div className="pb-2 border-b border-red-800 mb-2">
             <span className="text-red-400">┌─</span> Latest Error Log
           </div>
+
           <div className="space-y-1">
             <div>
               <span className="text-red-400">File:</span> <span className="break-words">{latestError.filepath}</span>
@@ -55,7 +58,18 @@ const Error_Block = () => {
           </div>
         </div>
       )}
+
+      <Link
+        href="/notebook/notes/latest_error"
+        className="mt-3 inline-block font-mono text-xs text-red-400 underline decoration-red-700 underline-offset-4
+                   hover:text-red-300 hover:decoration-red-500
+                   border border-red-800/60 bg-black px-3 py-1 rounded-sm
+                   shadow-inner transition"
+      >
+        &gt; how this error feed is built
+      </Link>
     </div>
   );
 };
+
 export default Error_Block;

@@ -43,10 +43,12 @@ const Index = () => {
         {/* About Section */}
         <MarkdownSection title="About">
           <p className="mb-4">
-            I’m a developer and Applied Physics student at Georgia Tech, with hands-on experience across SaaS, embedded
-            systems, and scalable backend platforms. I enjoy on building real-world tools, learning interesting tech,
-            and bringing ideas to life.
+            I&apos;m an Electrical Engineering student at Georgia Tech working in FPGA, RTL, and digital system design.
+            I&apos;m interested in low-latency, high-throughput systems. I enjoy working with both hardware and
+            software, designing custom logic. building testbenches, and creating tooling. When I&apos;m not working on
+            hardware, I&apos;m usually tweaking my neovim config, cooking, or playing chess.
           </p>
+          <p>Feel free to reach out - amanjikian3 [at] gatech [dot] edu</p>
         </MarkdownSection>
 
         <Error_Block />
@@ -114,22 +116,6 @@ const Index = () => {
                   <span className="bg-blue-100 text-green-800 px-2 py-1 rounded">Python</span>
                 </div>
               </div>
-
-              <div className="p-4 bg-card rounded border">
-                <h3 className="text-lg font-semibold mb-2">
-                  <span className="text-muted-foreground">### </span>
-                  BuzzPathway
-                </h3>
-                <p className="text-muted-foreground mb-3">
-                  Personalized transfer plan generator used by 500+ students. Collected and maintained course data
-                  across 1,700+ schools via web scraping + Vercel cron jobs. Built with MongoDB and automated pipelines.
-                </p>
-                <div className="flex gap-2 text-sm">
-                  <span className="bg-green-100 text-yellow-800 px-2 py-1 rounded">MongoDB</span>
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">Cron Jobs</span>
-                  <span className="bg-yellow-100 text-green-800 px-2 py-1 rounded">Web Scraping</span>
-                </div>
-              </div>
             </div>
           </MarkdownSection>
         </section>
@@ -138,40 +124,41 @@ const Index = () => {
         <MarkdownSection title="What I use">
           <div className="grid md:grid-cols-3 gap-6">
             <div>
-              <h4 className="font-semibold mb-3 text-primary">Programming Languages</h4>
+              <h4 className="font-semibold mb-3 text-primary">Languages & HDL</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
-                <li>- JavaScript</li>
-                <li>- TypeScript</li>
-                <li>- Python</li>
-                <li>- Go</li>
-                <li>- Dart</li>
+                <li>- SystemVerilog</li>
+                <li>- Verilog</li>
+                <li>- VHDL</li>
                 <li>- C++</li>
-                <li>- Solidity</li>
+                <li>- Python</li>
+                <li>- Bash</li>
+                <li>- MATLAB</li>
+                <li>- Tcl</li>
               </ul>
             </div>
+
             <div>
-              <h4 className="font-semibold mb-3 text-primary">Databases & Infra</h4>
+              <h4 className="font-semibold mb-3 text-primary">FPGA & ASIC Tooling</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
-                <li>- PostgreSQL</li>
-                <li>- Firebase</li>
-                <li>- MongoDB</li>
-                <li>- Supabase</li>
-                <li>- Docker</li>
+                <li>- Vivado</li>
+                <li>- Quartus</li>
+                <li>- Lattice</li>
+                <li>- Verilator</li>
+                <li>- Static Timing Analysis</li>
               </ul>
             </div>
+
             <div>
-              <h4 className="font-semibold mb-3 text-primary">Tools & Technologies</h4>
+              <h4 className="font-semibold mb-3 text-primary">Systems & Infrastructure</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
+                <li>- Linux</li>
                 <li>- Git</li>
-                <li>- Figma</li>
-                <li>- TensorFlow</li>
-                <li>- AWS(S3,EC2)</li>
-                <li>- SEO tools</li>
+                <li>- Docker</li>
+                <li>- Networking (TCP/UDP)</li>
               </ul>
             </div>
           </div>
         </MarkdownSection>
-
         <section id="terminal">
           <Terminal />
         </section>
