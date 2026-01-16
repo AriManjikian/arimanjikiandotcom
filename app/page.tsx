@@ -60,6 +60,31 @@ const Index = () => {
               <div className="p-4 bg-card rounded border">
                 <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
                   <span className="text-muted-foreground">### </span>
+                  <span>Jane Street Advent of FPGA - AOC Solution in Hardcaml</span>{' '}
+                  <span className="flex gap-2 items-center ml-auto">
+                    <a
+                      href="https://github.com/AriManjikian/advent-of-fpga-2025"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-foreground"
+                    >
+                      <Github className="size-4" />
+                    </a>
+                  </span>
+                </h3>
+                <p className="text-muted-foreground mb-3">
+                  Advent of FPGA 2025 solution: AOC Day 1 implemented in Hardcaml with Go golden model
+                </p>
+                <div className="flex gap-2 text-sm">
+                  <span className="bg-orange-100 text-blue-800 px-2 py-1 rounded">OCaml</span>
+                  <span className="bg-blue-100 text-green-800 px-2 py-1 rounded">Hardcaml</span>
+                  <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded">Golang</span>
+                </div>
+              </div>
+
+              <div className="p-4 bg-card rounded border">
+                <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
+                  <span className="text-muted-foreground">### </span>
                   <span>RISC-V Single-Cycle CPU</span>{' '}
                   <span className="flex gap-2 items-center ml-auto">
                     <a
